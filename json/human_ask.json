@@ -1,0 +1,29 @@
+{
+    "data_collected": {
+        "probability": 0.6573823599916987
+    },
+    "data_shared": {
+        "probability": 0.6573823599916987
+    },
+    "app_category": {
+        "probability": 0.34977162963295194
+    },
+    "content_rating": {
+        "probability": 0.5115072495804258
+    },
+    "does_have_ads": {
+        "probability": 0.6292680644149738
+    },
+    "num_reviews": {
+        "probability": 0.2594651472898544
+    },
+    "price": {
+        "probability": 0.5127756654757237
+    },
+    "avg_rating": {
+        "probability": 0.1830104189956608
+    },
+    "permission": {
+        "probability": 0.07117686902457501
+    }
+}

@@ -1,0 +1,71 @@
+{
+    "User Interface Design": {
+        "probability": 0.17063945189837282
+    },
+    "Navigation": {
+        "probability": 0.09042249500428204
+    },
+    "Accessibility": {
+        "probability": 0.019875820725092776
+    },
+    "Customization": {
+        "probability": 0.13831001998287182
+    },
+    "Functionality": {
+        "probability": 0.5997002569226377
+    },
+    "Performance": {
+        "probability": 0.4283828147302312
+    },
+    "Responsiveness": {
+        "probability": 0.26352412218098775
+    },
+    "Security": {
+        "probability": 0.033399942906080504
+    },
+    "Privacy": {
+        "probability": 0.023908078789608905
+    },
+    "Permissions": {
+        "probability": 0.008849557522123894
+    },
+    "Data Collection": {
+        "probability": 0.011204681701398801
+    },
+    "Data Sharing": {
+        "probability": 0.010491007707679132
+    },
+    "Updates": {
+        "probability": 0.2972095346845561
+    },
+    "Customer support": {
+        "probability": 0.15112046817013988
+    },
+    "Developer": {
+        "probability": 0.06583642592063946
+    },
+    "In-app purchases": {
+        "probability": 0.22209534684556095
+    },
+    "Battery/power Drainage": {
+        "probability": 0.03632600628033115
+    },
+    "app_category": {
+        "probability": 1
+    },
+    "content_rating": {
+        "probability": 1
+    },
+    "does_have_ads": {
+        "probability": 1
+    },
+    "num_reviews": {
+        "probability": 1
+    },
+    "price": {
+        "probability": 1
+    },
+    "avg_rating": {
+        "probability": 1
+    }
+}

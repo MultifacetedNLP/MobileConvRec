@@ -1,0 +1,71 @@
+{
+    "app_category": {
+        "value": "Social"
+    },
+    "content_rating": {
+        "value": "Mature 17+"
+    },
+    "does_have_ads": {
+        "value": "Contains Ads\u00b7Offers in-app purchases"
+    },
+    "num_reviews": {
+        "value": "100M"
+    },
+    "price": {
+        "value": "Free"
+    },
+    "avg_rating": {
+        "value": 3.7
+    },
+    "User Interface Design": {
+        "value": 1
+    },
+    "Navigation": {
+        "value": 1
+    },
+    "Accessibility": {
+        "value": 0
+    },
+    "Customization": {
+        "value": 0
+    },
+    "Functionality": {
+        "value": 1
+    },
+    "Performance": {
+        "value": 1
+    },
+    "Responsiveness": {
+        "value": 1
+    },
+    "Security": {
+        "value": 0
+    },
+    "Privacy": {
+        "value": 0
+    },
+    "Permissions": {
+        "value": 0
+    },
+    "Data Collection": {
+        "value": 0
+    },
+    "Data Sharing": {
+        "value": 0
+    },
+    "Updates": {
+        "value": 1
+    },
+    "Customer support": {
+        "value": 0
+    },
+    "Developer": {
+        "value": 0
+    },
+    "In-app purchases": {
+        "value": 0
+    },
+    "Battery/power Drainage": {
+        "value": 0
+    }
+}
