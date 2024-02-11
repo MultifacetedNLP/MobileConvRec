@@ -259,7 +259,7 @@ if __name__ == '__main__':
     
     df1 = pd.read_csv('data/final_review_data_updated.csv')
     df2 = pd.read_csv('data/final_master_app_data.csv', usecols=['app_package','rating','uid','formated_date'])
-    id=2
+    id=0
 
     for index, row in df1[df1['reviewId'] >= id].iterrows():
         reviewId = row['reviewId']
