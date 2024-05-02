@@ -1,179 +1,63 @@
 {
-    "User Interface Design": {
-        "query":["Do you want to check apps with better user interface design?",
-                "Are you interested in apps with good user interface design?",
-                "Do you want to find apps with a more intuitive user interface design?"],
-        "text": {"1":["Absolutely! I'm interested in exploring apps that have better user interface designs.",
-                "Certainly, I'm open to exploring applications that offer a better user interface experience",
-                "Yes, I would like to explore apps known for better user interface designs."],
-                "0":["I am not interested about user interface design","I dont care about user interface design."]
-    }},
-    "Navigation": {
-        "query":["Are you looking for applications that have better navigation feature?",
-                "Are you interested in exploring apps with advanced navigation feature?"],
-        "text": {"1":["Yes, it's a priority for me.","Yes, smooth navigation is a priority for me",
-                     "Yes, seamless navigation is important for me."],
-                "0":["No, I am not interested.","I dont care about navigation.","No, I focus on other features."]
-    }},
-    "Accessibility": {
-        "query":["Would you like apps with accessibility?",
-                "Are you interested in apps with accessibility?"],
-        "text": {"1":["Yes, I prefer apps with accessibility.",
-                    "Yes, I choose apps with accessibility features.",
-                    "Yes, it's an important consideration."],
-                "0":["No, I don't pay much attention to accessibility.","No, I dont care about accessibility.",
-                     "No, it wouldn't make a difference."]
-    }},
-    "Customization": {
-        "query":["Are you interested in apps with customization feature?",
-                "Do you prefer customization options in your apps?",
-                "Would you use apps that allow customization?"],
-        "text": {"1":["Yes, customization option is important.","Yes, I am interested in apps with customization feature.",
-                     "Yes, I prefer apps with customization options."],
-                "0":["No, customization doesn't impact my decision.","No, I dont care about customization.",
-                     "No, it doesn't matter to me."]
-    }},
-    "Functionality": {
-        "query":["How would you prioritize the functionalities of the application in terms of importance?",
-                "When considering the application, how much weight do you place on its functionalities?"],
-        "text": {"1":["The application's functionalities are crucial."],
-                "0":["Not really, it's not a big deal for me."]
-    }},
-    "Performance": {
-        "query":["Do you care about the apps performance?",
-                "Is the performance of the app important to you?"],
-        "text": {"1":["Yes, performance matters to me.","Yes, performance influences my choices."],
-                "0":["No, I don't care about apps performance","No, it's not a big deal for me."]
-    }},
-    "Responsiveness": {
-        "query":["Do you find app responsiveness important?",
-                "Is apps responsiveness a factor in your user experience?"],
-        "text": {"1":["Yes, responsiveness is crucial for me."],
-                "0":["I am not interested apps responsiveness.","No, it's not a big deal for me."]
-    }},
-    "Security": {
-        "query":["Do you prefer apps that prioritize user security?",
-                "Is the security an important factor to choose an app?"],
-        "text": {"1":["Yes, it's essential to me.","Yes, I take the security serious."],
-                "0":["No, I don't worry about it.", "No, it doesn't matter much to me"]
-    }},
-    "Privacy": {
-        "query":["How much value do you place on the privacy features of mobile applications?",
-                "Do you consider mobile application privacy to be a significant factor when choosing and using apps?",
-                "Are you mindful of the privacy features when selecting and using mobile apps?"],
-        "text": {"1":["I consider mobile application privacy to be extremely important.",
-                        "Privacy is definitely a significant factor for me."],
-                "0":["I don't pay much attention to mobile application privacy. "]
-    }},
-    "Permissions": {
-        "query":["How much attention do you pay to the permissions requested by mobile apps when you download them?",
-                "Do you actively review and consider the permissions an app requests before installing it",
-                "Are you mindful of the permissions that mobile apps request, and does it influence your decision to install them?"],
-        "text": {"1":["I consider mobile app permissions quite seriously."],
-                "0":["I don't bother much with app permissions."]
-    }},
-    "Data Collection": {
-        "query":["When you download a new mobile app, how important is it for you to review and understand its data collection policies?",
-                "Do you actively check and assess the data collection practices of mobile apps before using them?",
-                "Are you mindful of the data collection practices of mobile apps, and does it influence your decision to use them?"],
-        "text": {"1":["I always make it a point to check and understand the data collection policies of any mobile app I download."],
-                "0":["I rarely pay attention to the data collection policies of mobile applications."]
-    }},
-    "Data Sharing": {
-        "query":["When using mobile apps, how concerned are you about the sharing of your data with third parties?",
-                "Do you actively consider the extent of data sharing with third parties when deciding to use a particular mobile application?",
-                "Are you concerned about the app sharing your data?"],
-        "text": {"1":["I consider mobile application data sharing with third parties to be a crucial aspect when choosing apps."],
-                "0":["I don't pay much attention to mobile app data-sharing practices with third parties."]
-    }},
-    "Updates": {
-        "query":["Would you prefer apps with regular Updates?","Would you prefer apps that automatically update?",
-                "Are you looking for apps with regular updates?"],
-        "text": {"1":["Yes, timely updates are important to me."],
-                "0":["I dont care about the app updates."]
-    }},
-    "Customer support": {
-        "query":["When choosing a mobile app, how much importance do you place on the availability and quality of customer support?",
-                "Do you consider the level of support provided by an app's developers to be a significant factor in your decision to use it?"],
-        "text": {"1":["Yes, the app should provide Customer support.",
-                "I find good customer support for mobile apps to be incredibly important.",
-                "I prioritize mobile apps that offer excellent customer support."],
-                "0":["I rarely consider customer support when choosing a mobile app."]
-    }},
-    "Developer": {
-        "query":["How much weight do you give to the reputation or credibility of the developer when choosing to install a mobile app?",
-                "How important is the track record of the developer or company behind the app?",
-                "In choosing mobile apps, how significant is the trust you place in the developer or company responsible for creating the app?"],
-        "text": {"1":["I always consider the developer's reputation before installing a mobile app."],
-                "0":[" I don't really pay much attention to the developer when installing apps."]
-    }},
-    "In-app purchases": {
-        "query":["How significant are in-app purchases when you're deciding whether or not to download a new mobile app?",
-                "How much importance do you typically place on the availability or nature of in-app purchases?",
-                "What's your stance on the importance of in-app purchases when choosing to install a mobile application?"],
-        "text": {"1":["I consider in-app purchases quite important because they often enhance my overall experience with the app.",
-                "I find in-app purchases helpful when they offer premium content or features.",
-                "I appreciate apps that provide additional functionalities through in-app purchases. "],
-                "0":["I'm generally skeptical of in-app purchases.","I tend to avoid apps with too many in-app purchases."]
-    }},
-    "Battery/power Drainage": {
-        "query":["How important is the battery performance of a mobile app when you're deciding whether or not to install it?",
-                "How much importance do you typically give on your device's battery life or power consumption while selecting a mobile application?",
-                "Does the potential impact on battery life of a mobile app play a significant role in your decision-making process?"],
-        "text": {"1":["Yes, battery life matters a lot to me.","I consider battery life quite important when deciding to install an app."],
-                "0":["I don't pay much attention to how apps affect my battery.","Battery life isn't a top priority for me.",
-                "No, it's not a primary concern for me."]
-    }},
     "app_category": {
-        "query":["What specific app category or type are you usually interested in?",
-                "Are there specific app categories that you find yourself drawn to?",
-                "Do you have a preferred app category or type that you usually find interesting?"],
-        "text": {"1":["Absolutely, I usually lean towards $X apps.",
-                    "I am keen on checking out $X app today.","Yes, I'm often drawn to $X apps."],
+        "query":["Hi! How can I help you today?","Hi! What brings you here today?",
+                "Hey there! How can I help you out today?",
+                "Hello! How may I assist you today?"],
+        "text": {"1":["I'm looking for a $X for my Android phone. Any suggestions?",
+                    "I am interested in $X that are compatible with Android.",
+                    "Searching for $X that support Android devices.","I'd like to find $X that works on Android. Any ideas?",
+                    "I'm interested in finding $X that works with Android. Any recommendation?"],
                 "0":["Not really, I don't have a specific category in mind when installing apps.",
                 "I don't have a strong preference for specific app categories.", "Not really, I don't have a preferred app cetegory."]
     }},
     "content_rating": {
-        "query":[" Do you have any preferences for the apps content rating?",
-                "Can you specify the content rating of the app?", "Do you have a preference for apps content rating?"],
-        "text": {"1":["I am looking apps for $X.","I am searching for app designed for $X.",
-                "I prefer apps suitable for $X."],
+        "query":["Do you have any preferences for the apps content rating?",
+                "Can you specify the content rating of the app?", "Do you have a preference for apps content rating?",
+                "Is there a specific content rating you prefer?", "Do you have any specific content rating in mind for the app?"],
+        "text": {"1":["I am looking apps for $X.","$X would be preferable for me.",
+                "I prefer apps with a rating of $X.","I generally prefer apps with a rating of $X.",
+                "$X is the content rating I prefer for apps."],
                 "0":["I dont care about the content rating.","I am okay with any content rated apps."]
     }},
     "does_have_ads": {
-        "query":["How do you feel about apps that include advertisements?",
-                "How much importance do you place on the advertisement feature of the mobile application?",
-                "Are you open to exploring applications that include advertising content?",
-                "How does the advertisement feature influence your decision-making process when it comes to installing a mobile app?"],
-        "text": {"1":["Absolutely, I'm open to explore apps that $X.","Absolutely, I pay attention to apps that $X",
-                "Certainly, I'm open-minded about apps that $X"],
+        "query":["Okay, Do you mind if the app has ads?", "Sure, are you okay if the app includes ads?",
+                "Hmm, are you comfortable with intermittent ads in the app?", "Alright, are you fine with ads being shown in the app?",
+                "Are you okay with occasional ads in the app?", "Got it! What about ads?"],
+        "text": {"1":["I'm open to explore apps that $X.","I'm willing to consider apps that include $X.",
+                "Certainly, I'm okay with apps that $X.","I don't mind few ads.","I'm okay with apps showing a few ads."],
                 "0":["I don't pay much attention to the advertising feature.","I actively avoid apps with too many ads."]
     }},
     "num_reviews": {
-        "query":["What's the minimum number of reviews you are looking when deciding to install a mobile app??",
-                "Is there a specific minimum number of reviews you consider before deciding to install an app?",
-                "Do you have a specific threshold for the number of reviews the app should have?"],
-        "text": {"1":["I generally feel more confident about installing an app when it has at least $X reviews",
+        "query":["Okay. How about the number of reviews?","Sure, what about the number of reviews?",
+                "Are you interested in apps with many reviews?",
+                "Do you care about the app having many reviews?","How many reviews are you looking at?",
+                "What's your preference regarding the number of reviews?"],
+        "text": {"1":["I generally prefer app when it has at least $X reviews",
                 "I usually look for apps with a minimum of $X user reviews.",
-                "I feel more comfortable installing an app when it has at least $X reviews."],
+                "I'd prefer an app that's popular and has at least $X reviews.",
+                "I prefer apps that have a significant number of reviews, such as $X."],
                 "0":["I don't really pay much attention to the number of reviews.","I rarely check the number of reviews.",
                 "The number of reviews doesn't matter much to me."]
     }},
     "price": {
-        "query":["Do you prioritize free options or are you willing to invest in paid apps for added features?",
-                "Are you more inclined towards using paid apps or interested in free alternatives only?",
-                "Do you lean towards paid applications or do you tend to explore free app options?"],
-        "text":{"1": ["I generally prefer using $X apps.","I find that $X apps can offer great functionality.",
-                "I usually go for $X apps."],
+        "query":["Do you prefer free apps, or are you willing to pay for extra features?",
+                "Would you prefer a free app or willing to pay for additional features?",
+                "Are you interested in a free app or would you consider paying for additional features?",
+                "Do you prefer free apps or are you open to paying for premium features?",
+                "Are you looking for free or paid version?"],
+        "text":{"1": ["I generally prefer using $X apps.","I prefer $X apps.", "I generally like using $X apps.",
+                "$X is preferable.", "$X would be ideal.", "I'm usually more into $X apps."],
                 "0":["I don't have a strong preference about apps price.","Whether an app is free or paid doesn't matter much to me.",
                 "Free or paid, it doesn't impact my decision much."]
     }},
     "avg_rating": {
-        "query":["What average rating do you typically look for when deciding to install a mobile application?",
-                " What is the ideal average rating that a mobile app should have for you to install it?",
-                "Do you have a specific threshold for average ratings that influences your decision to install a mobile application?"],
+        "query":["Would you prefer an app with a high average rating from users?",
+                "What average rating are you looking for?", 
+                "Absolutely! Are you looking for an app with a particular average rating?",
+                "Got it! Are you looking for an app with a specific average rating?",
+                "Understood. How important is the average rating of the app to you? "],
         "text": {"1":["I usually look for mobile apps with an average rating of $X starts or higher.",
-                "I look for apps with a minimum $X star average rating.","I tend to install apps that have at least a $X star average rating.",
+                "I look for apps with a minimum $X star average rating.","I like apps that have at least a $X star average rating.",
                 "I prefer apps with high ratings, around $X stars or above."],
                 "0":["I don't pay much attention to average ratings.","Average ratings don't really influence my decision.","Average ratings don't matter to me."]
     }}
