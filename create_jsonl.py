@@ -134,15 +134,11 @@ def txt_to_jsonl():
                                                                
                             current_turn = {'turn': interaction_counter, 'is_rec': reco, 'user_accept_recommendation': user_accept ,'COMPUTER': message}
                         elif speaker == 'HUMAN' and current_turn:
-                            if "I'll give it a try" in message or "Thank you for the recommendation!" in message:
-                                user_accept=True
-                            elif check_rec_in_message([rec_app_name], message) and '?' not in message:
-                                user_accept=True           
-                            else:                               
-                                if partial_check_rec_in_message([rec_app_name], message) and '?' not in message:
-                                    user_accept=True
-                                else:
-                                    user_accept=False
+                            is_last_human = lines.index(line) + 2 >= len(lines)                            
+                            if is_last_human:
+                                user_accept=True    
+                            else:
+                                user_accept=False
                             current_turn['user_accept_recommendation'] = user_accept
                             current_turn['HUMAN'] = message
                             user_data['turns'].append(current_turn)
