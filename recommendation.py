@@ -8,7 +8,7 @@ import dataset
 def get_recommendations(reviewId, app_package):
     
     df_app_metadata = dataset.load_app_metadata()
-    df_review = dataset.load_review_data()
+    df_review = dataset.load_history()
     df_app = df_app_metadata[df_app_metadata['app_package'] == app_package]
     df_item_app = df_app[['app_package','app_name','app_category','app_type','positive_points','negative_points','key_word']]
     
