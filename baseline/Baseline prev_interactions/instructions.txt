@@ -1,0 +1,13 @@
+Each folder contains baseline_prev_interactions_train.py and baseline_prev_interactions_test.py.
+
+You can run these scripts for each dataset where folder name is the name of the dataset. Relative paths should work without needing any changes if pwd is inside the folder e.g. inside Yelp folder for yelp dataset.
+
+Running train.py will train and save the model and test.py will check the success rate based on string similarity on 95 percent threshold.
+
+I checked by running each training and testing for few seconds and also checked the structure of train, valid and test data. Data structure seems fine and there are no errors in that.
+Training args are same as the ones i used for training similar model when we were working with mobilerec data alone because models are same and setting is similar too aside from names of few columns in dataset.
+You can check training args if they need any adjustment.
+
+
+I set additianal special tokens to ["<|sep|>","computer:", "human:"] in which first one is seperater for different items in interaction history and other 2 will be used in conversation only baseline model as you used for mobile rec dataset. Matching the vocabolary and sequence length while training these models will help in future and these could be used as pre-trained encoders in the third model where cross-attention is applied. I set maximum sequence length 1024 for all these.
+
