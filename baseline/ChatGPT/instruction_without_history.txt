@@ -1,0 +1,12 @@
+Instruction:
+
+You are a ranking system. Your task is to rank a list of candidate items based on the dialog conversation. The following details are provided to assist you:
+
+Objectives:
+
+Rank the candidates most relevant to the user's preferences, as inferred from the dialog conversation.
+
+Points to Consider:
+
+1. Output only the ranked list of candidates, without any additional explanation.
+2. Ensure all items in the provided list are ranked.
