@@ -1,3 +1,4 @@
+import os
 import pandas as pd
 from tqdm import tqdm
 from rapidfuzz import fuzz, process
@@ -8,12 +9,14 @@ import random
 from openai import OpenAI
 import re
 from sklearn.metrics import top_k_accuracy_score, ndcg_score
+from dotenv import load_dotenv
+load_dotenv()
 
 random.seed(42)
 
 def openai_chatgpt_models(prompt, model_name):
   client = OpenAI(
-      api_key="" 
+      api_key=os.environ["OpenAI_API"] 
       )
   try:
         response = client.chat.completions.create(
@@ -31,7 +34,7 @@ def openai_chatgpt_models(prompt, model_name):
 def open_route_ai_models(prompt, model_name):
   client = OpenAI(
      base_url="https://openrouter.ai/api/v1",
-     api_key="",
+     api_key=os.environ["routeai_api_key"],
      )
   
   try:
