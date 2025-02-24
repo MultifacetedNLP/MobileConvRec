@@ -64,7 +64,7 @@ recommended_item_name = []
 turns = []
 recommend_indexes = []
 
-for index, row in train_raw.iterrows():
+for index, row in tqdm(train_raw.iterrows()):
     user_id.append(row['user_id'])
     prev = row['user_previous_interactions']
     prev_ = [item[name_column_name] for item in prev]
@@ -112,7 +112,7 @@ recommended_item_name = []
 turns = []
 recommend_indexes = []
 
-for index, row in valid_raw.iterrows():
+for index, row in tqdm(valid_raw.iterrows()):
     user_id.append(row['user_id'])
     prev = row['user_previous_interactions']
     prev_ = [item[name_column_name] for item in prev]
