@@ -1,4 +1,4 @@
-from transformers import AutoModelForSeq2SeqLM, AutoTokenizer, Trainer, TrainingArguments
+from transformers import AutoModelForSeq2SeqLM, AutoTokenizer, Trainer, TrainingArguments, EarlyStoppingCallback
 import torch
 import os
 import pandas as pd
@@ -248,7 +248,7 @@ def data_collator(batch):
 
 training_args = TrainingArguments(
     output_dir="models/t5_baseline_prev_interactions/" + sys.argv[1],
-    num_train_epochs=5,
+    num_train_epochs=100,
     # logging_steps=500,
     # logging_dir=self.cfg.logging_dir,
     load_best_model_at_end=True,
@@ -275,10 +275,11 @@ trainer = Trainer(
         train_dataset=dataset_train,
         eval_dataset=dataset_validation,
         data_collator=data_collator,
+        callbacks=[EarlyStoppingCallback(early_stopping_patience=3)]
     )
 
 
 
 
-trainer.train()
+trainer.train(resume_from_checkpoint=True)
 trainer.save_model()

@@ -261,7 +261,7 @@ def evaluate_recommender(prompt_test, recommend_test, model, tokenizer, batch_si
 
 
 
-correctly_predicted = evaluate_recommender(prompt_test, recommend_test, model, tokenizer, batch_size=4, threshold=95)
+correctly_predicted = evaluate_recommender(prompt_test, recommend_test, model, tokenizer, batch_size=4, threshold=70)
 success_rate = sum(correctly_predicted) / len(correctly_predicted)
 print("success_rate: ", success_rate)
 
@@ -339,7 +339,7 @@ true_relevance = [[1 if item == index else 0 for item in range(len(candidate_ite
 ndgc_scores = [ndcg_score(true_relevance, scores, k=k) for k in range(1, 11)]
 
 
-print("top-k scores below 1-10")
+print("top-k scores for 1-10")
 print(top_k_scores)
-print("ndgc scores below 1-10")
+print("ndgc scores for 1-10")
 print(ndgc_scores)
