@@ -245,25 +245,27 @@ def data_collator(batch):
 
 
 
+
+
 output_dir = "models/t5_baseline_prev_interactions/" + sys.argv[1]
+
 training_args = TrainingArguments(
-    output_dir=output_dir,
-    num_train_epochs=100,
-    # logging_steps=500,
-    # logging_dir=self.cfg.logging_dir,
+    output_dir="models/t5_baseline_prev_interactions/" + sys.argv[1],
+    # Set a high max number of epochs (early stopping will terminate training earlier)
+    num_train_epochs=10,  # Increased to allow early stopping
     load_best_model_at_end=True,
     metric_for_best_model="eval_loss",
-    save_strategy="steps",
+    greater_is_better=False,  # Important for loss (lower is better)
     evaluation_strategy="steps",
-    save_steps=0.3,#self.cfg.save_steps,
-    eval_steps=0.3, #self.cfg.eval_steps,
+    eval_steps=100,  # Evaluate every N steps (use an integer, not a float)
+    save_strategy="steps",
+    save_steps=100,  # Align save steps with eval steps
     save_total_limit=3,
-    gradient_accumulation_steps=3, #gradient_accumulation_steps,
-    per_device_train_batch_size=4, #train_batch_size,
-    per_device_eval_batch_size=4, #self.cfg.eval_batch_size,
+    gradient_accumulation_steps=3,
+    per_device_train_batch_size=4,
+    per_device_eval_batch_size=4,
     warmup_steps=100,
     weight_decay=0.01,
-    # dataloader_drop_last=True,
     disable_tqdm=False,
     push_to_hub=False,
     report_to="none"
@@ -275,7 +277,7 @@ trainer = Trainer(
         train_dataset=dataset_train,
         eval_dataset=dataset_validation,
         data_collator=data_collator,
-        callbacks=[EarlyStoppingCallback(early_stopping_patience=3)]
+        callbacks=[EarlyStoppingCallback(early_stopping_patience=3)],
     )
 
 
