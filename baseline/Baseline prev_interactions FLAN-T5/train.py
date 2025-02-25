@@ -245,9 +245,9 @@ def data_collator(batch):
 
 
 
-
+output_dir = "models/t5_baseline_prev_interactions/" + sys.argv[1]
 training_args = TrainingArguments(
-    output_dir="models/t5_baseline_prev_interactions/" + sys.argv[1],
+    output_dir=output_dir,
     num_train_epochs=100,
     # logging_steps=500,
     # logging_dir=self.cfg.logging_dir,
@@ -279,7 +279,11 @@ trainer = Trainer(
     )
 
 
+checkpoints = [d for d in os.listdir(output_dir) if d.startswith("checkpoint-")]
 
-
-trainer.train(resume_from_checkpoint=True)
+if checkpoints:
+    trainer.train(resume_from_checkpoint=True)
+else:
+    trainer.train()
+    
 trainer.save_model()
