@@ -2,3 +2,4 @@ envs/
 models/
 dataset/
 baseline/ChatGPT/.env
+.vscode/
