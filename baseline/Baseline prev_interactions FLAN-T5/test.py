@@ -21,6 +21,10 @@ if len(sys.argv) != 2:
 
 
 
+def get_first_five_words(sentence):
+    words = sentence.split()  # Split the sentence into a list of words
+    return " ".join(words[:10])  # Join the first 5 words back into a string
+
 
 def is_approximate_substring(substring, string, threshold=70):
     for i in range(len(string) - len(substring) + 1):
@@ -146,23 +150,23 @@ all_items = []
 with open(items_path, 'r', encoding='utf-8') as csv_file:
     csv_reader = csv.DictReader(csv_file)
     for row in csv_reader:
-        all_items.append(row[name_col].lower())
+        all_items.append(get_first_five_words(row[name_col].lower()))
 
 
 
 
 
 
-def fix_recommended_items_names(row):
-    if row["recommended_item_name"] not in all_items:
-        for item in all_items:
-            if fuzz.ratio(row["recommended_item_name"], item) > 80:
-                return item
-        return "uno!™"
-    else:
-        return row["recommended_item_name"]
+# def fix_recommended_items_names(row):
+#     if row["recommended_item_name"] not in all_items:
+#         for item in all_items:
+#             if fuzz.ratio(row["recommended_item_name"], item) > 80:
+#                 return item
+#         return "uno!™"
+#     else:
+#         return row["recommended_item_name"]
 
-df_recommender_test['recommended_item_name'] = df_recommender_test.apply(fix_recommended_items_names, axis=1)
+# df_recommender_test['recommended_item_name'] = df_recommender_test.apply(fix_recommended_items_names, axis=1)
 
 
 
@@ -193,14 +197,15 @@ def candidate_creator(row):
     np.random.seed(row.name)
     
     # Get candidate items
-    candidates = list(np.setdiff1d(filter_candidate_apps(row["recommended_item_name"]), [row["recommended_item_name"]]))
+    rec = get_first_five_words(row["recommended_item_name"])
+    candidates = list(np.setdiff1d(filter_candidate_apps(rec), [rec]))
 
     # Select 24 items
     selected_values = np.random.choice(candidates, 24, replace=False).tolist()  # Convert NumPy array to list
 
     # Randomly insert the recommended item (using list insert instead of np.insert)
     random_position = np.random.randint(0, len(selected_values) + 1)
-    selected_values.insert(random_position, row["recommended_item_name"])  # Python list insert
+    selected_values.insert(random_position, rec)  # Python list insert
     
     return selected_values  # Return as a list instead of a NumPy array
 
@@ -223,7 +228,7 @@ for _, row in df_recommender_test.iterrows():
     if row["previous_interactions"] is not None:
         prompt = row["previous_interactions"]
     prompt_test.append(prompt)
-    recommend_test.append(row["recommended_item_name"])
+    recommend_test.append(get_first_five_words(row["recommended_item_name"]))
 
 
 

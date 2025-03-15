@@ -18,6 +18,9 @@ if len(sys.argv) != 2:
     sys.exit(1)
 
 
+def get_first_five_words(sentence):
+    words = sentence.split()  # Split the sentence into a list of words
+    return " ".join(words[:10])  # Join the first 5 words back into a string
 
 
 
@@ -181,7 +184,7 @@ for _, row in df_recommender_validation.iterrows():
     if row["previous_interactions"] is not None:
         prompt = row["previous_interactions"]
     prompt_validation.append(prompt)
-    recommend_validation.append(row["recommended_item_name"])
+    recommend_validation.append(get_first_five_words(row["recommended_item_name"]))
 
 
 
@@ -208,7 +211,7 @@ for _, row in df_recommender_train.iterrows():
     if row["previous_interactions"] is not None:
         prompt = row["previous_interactions"]
     prompt_train.append(prompt)
-    recommend_train.append(row["recommended_item_name"])
+    recommend_train.append(get_first_five_words(row["recommended_item_name"]))
 
 
 
