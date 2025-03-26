@@ -221,7 +221,7 @@ for _, row in df_recommender_test.iterrows():
     candidates = []
     for index, candidate_item in enumerate(row["candidate_items"]):
         candidates.append(candidate_item)
-        if candidate_item == row["recommended_item_name"]:
+        if candidate_item == get_first_five_words(row["recommended_item_name"]):
             true_candidate_index.append(index)
 
     candidate_items.append(candidates)
