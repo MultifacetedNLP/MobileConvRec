@@ -213,17 +213,3 @@ trainer = Trainer(
 
 trainer.train()
 trainer.save_model()
-
-
-torch.cuda.empty_cache()
-
-input_file = "baseline/Baseline Conversation/Amazon Beauty/test.jsonl"
-df_recommender_test = pd.read_json(input_file, lines=True)
-
-apps_training_path = "/u/spa-d4/grad/mfe261/Projects/MobileConvRec/data/master_app_data_V1_true.csv"
-
-all_apps = []
-with open(apps_training_path, 'r') as csv_file:
-    csv_reader = csv.DictReader(csv_file)
-    for row in csv_reader:
-        all_apps.append(row["app_name"].lower())
