@@ -78,7 +78,7 @@ for _, row in tqdm(df_recommender_train.iterrows(), total=len(df_recommender_tra
 
             if fuzz.partial_ratio(recommended, computer.lower()) >= 90:
                 prompt += "computer: I would recommend the "
-                items_train.append(RecommenderItem(prompt, '<|sep|>' + recommended + eos))
+                items_train.append(RecommenderItem(prompt, recommended + eos))
                 found = True
                 break
             else:
@@ -108,7 +108,7 @@ for _, row in tqdm(df_recommender_validation.iterrows(), total=len(df_recommende
         
         if fuzz.partial_ratio(recommended, computer.lower()) >= 90:
             prompt += "computer: I would recommend the "
-            items_validation.append(RecommenderItem(prompt, '<|sep|>' + recommended + eos))
+            items_validation.append(RecommenderItem(prompt, recommended + eos))
             found = True
             break
         else:

@@ -27,19 +27,19 @@ df_recommender_test = pd.read_json(input_file, lines=True)
 for _, row in df_recommender_test.iterrows():
     row["recommended_product"]["product_name"] = row["recommended_product"]["product_name"].lower()
     
-apps_training_path = "/u/spa-d4/grad/mfe261/Projects/MobileConvRec/dataset/amazon_beauty/beauty_df.csv"
+items_training_path = "/u/spa-d4/grad/mfe261/Projects/MobileConvRec/dataset/amazon_beauty/beauty_df.csv"
 
-all_apps = []
-with open(apps_training_path, 'r') as csv_file:
+all_items = []
+with open(items_training_path, 'r') as csv_file:
     csv_reader = csv.DictReader(csv_file)
     for row in csv_reader:
-        all_apps.append(get_first_five_words(row["title"].lower()))
+        all_items.append(get_first_five_words(row["title"].lower()))
         
-all_apps = list(set(all_apps))
+all_items = list(set(all_items))
 
 def candidate_creator(row):
     np.random.seed(row.name)
-    selected_values = np.random.choice(np.setdiff1d(all_apps, [get_first_five_words(row["recommended_product"]["product_name"])]), 24, replace=False) #  
+    selected_values = np.random.choice(np.setdiff1d(all_items, [get_first_five_words(row["recommended_product"]["product_name"])]), 24, replace=False) #  
     random_position = np.random.randint(0, len(selected_values) + 1)
     
     return np.insert(selected_values, random_position, get_first_five_words(row["recommended_product"]["product_name"])) 
@@ -77,14 +77,14 @@ model.eval()
 
 prompt_test = []
 recommend_test = []
-candidate_books = []
+all_candidate = []
 true_candidate_indexes = []
 not_founds = 0
 for _, row in df_recommender_test.iterrows():
     candidates = []
-    for index, candidate_book in enumerate(row["candidate"].tolist()):
-        candidates.append(candidate_book)
-        if candidate_book == get_first_five_words(row["recommended_product"]["product_name"]):
+    for index, candidate_item in enumerate(row["candidate"].tolist()):
+        candidates.append(candidate_item)
+        if candidate_item == get_first_five_words(row["recommended_product"]["product_name"]):
             true_candidate_index = index
     prompt = bos
     found = False
@@ -96,8 +96,8 @@ for _, row in df_recommender_test.iterrows():
         if fuzz.partial_ratio(recommended, computer.lower()) >= 90:
             prompt += "computer: I would recommend the "
             prompt_test.append(prompt)
-            recommend_test.append('<|sep|>' + recommended + eos)
-            candidate_books.append(candidates)
+            recommend_test.append(recommended + eos)
+            all_candidate.append(candidates)
             true_candidate_indexes.append(true_candidate_index)
             found = True
             break
@@ -114,7 +114,7 @@ for _, row in df_recommender_test.iterrows():
 print(f"Could not find {not_founds}")
 print(f"Number of prompt: {len(prompt_test)}")
 print(f"Number of generations: {len(recommend_test)}")
-print(f"Number of candidate apps: {len(candidate_books)}")
+print(f"Number of candidate: {len(all_candidate)}")
 print(f"Number of true candidate indexes: {len(true_candidate_indexes)}")
 
 
@@ -125,7 +125,7 @@ def chunk(list_of_elements, batch_size): # using this chunk function, we can spl
 def evaluate_recommender(prompts, generations, model, tokenizer, batch_size=8, device=device, threshold=70):
   prompt_batches = list(chunk(prompts, batch_size))
   generation_batches = list(chunk(generations, batch_size))
-  max_length=1024
+  max_length=992
   generation_length = 32
   correctly_predicted = []
   for prompt_batch, generation_batch in tqdm(zip(prompt_batches, generation_batches), total = len(generation_batches)):
@@ -160,22 +160,22 @@ def chunk(list_of_elements, batch_size): # using this chunk function, we can spl
 def convert_to_sublists(numbers, sublist_size):
     return [numbers[i:i+sublist_size] for i in range(0, len(numbers), sublist_size)]
 
-def recommender_rank(prompts, candidate_apps, model, tokenizer, batch_size=8, device=device):
+def recommender_rank(prompts, all_candidate, model, tokenizer, batch_size=8, device=device):
   model.eval()
   tokenizer.padding_side='left'
   tokenizer.truncation_side='left'
-  max_length = 1024
+  max_length = 992
   prompts_ids = tokenizer(prompts, max_length=max_length, truncation=True, padding="max_length", return_tensors="pt")
   
   tokenizer.padding_side='right'
   tokenizer.truncation_side='right'
   input_ids = []
   attention_mask = []
-  for index, candidate_app_elements in enumerate(candidate_apps):
-    candidate_apps_ids = tokenizer(candidate_app_elements, max_length=32, truncation=True, padding="max_length", return_tensors="pt")
-    for candidate_app_index in range(len(candidate_app_elements)):
-      input_ids.append(torch.cat([prompts_ids["input_ids"][index], candidate_apps_ids["input_ids"][candidate_app_index]]))
-      attention_mask.append(torch.cat([prompts_ids["attention_mask"][index], candidate_apps_ids["attention_mask"][candidate_app_index]]))
+  for index, candidate_elements in enumerate(all_candidate):
+    candidate_elements_ids = tokenizer(candidate_elements, max_length=32, truncation=True, padding="max_length", return_tensors="pt")
+    for candidate_app_index in range(len(candidate_elements)):
+      input_ids.append(torch.cat([prompts_ids["input_ids"][index], candidate_elements_ids["input_ids"][candidate_app_index]]))
+      attention_mask.append(torch.cat([prompts_ids["attention_mask"][index], candidate_elements_ids["attention_mask"][candidate_app_index]]))
       
   input_ids_batches = list(chunk(input_ids, batch_size))
   attention_mask_batches = list(chunk(attention_mask, batch_size))
@@ -202,16 +202,16 @@ def recommender_rank(prompts, candidate_apps, model, tokenizer, batch_size=8, de
     score = (tokens_logprobs * mask).sum(-1) / mask.sum(-1)
     scores.extend(score.to('cpu').tolist())
   
-  scores = convert_to_sublists(scores, len(candidate_apps[0]))
+  scores = convert_to_sublists(scores, len(all_candidate[0]))
   
   return scores
 
-scores = recommender_rank(prompt_test, recommend_test, model, tokenizer, batch_size=4, device=device)
+scores = recommender_rank(prompt_test, all_candidate, model, tokenizer, batch_size=4, device=device)
 
 print([top_k_accuracy_score(true_candidate_indexes, scores, k=k) for k in range(1, 11)])
 
 
-true_relevance = [[1 if item == index else 0 for item in range(len(recommend_test[0]))] for index in true_candidate_indexes]
+true_relevance = [[1 if item == index else 0 for item in range(len(all_candidate[0]))] for index in true_candidate_indexes]
 
 
 print([ndcg_score(true_relevance, scores, k=k) for k in range(1, 11)])
